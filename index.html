@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Tomáš Juřička" />
+    <title>Advent of Code 2021</title>
+    <meta name="description" content="Advent of code 2021 solution solver" />
+    <meta name="keywords" content="AdventOfCode, AdventOfCode2021" />
+    <style>
+      /* Sakura.css v1.3.1
+ * ================
+ * Minimal css theme.
+ * Project: https://github.com/oxalorg/sakura/
+ */
+      /* Body */
+      html {
+        font-size: 62.5%;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      }
+
+      body {
+        font-size: 1.8rem;
+        line-height: 1.618;
+        max-width: 48em;
+        margin: auto;
+        color: #4a4a4a;
+        background-color: #f9f9f9;
+        padding: 13px;
+      }
+
+      @media (max-width: 684px) {
+        body {
+          font-size: 1.53rem;
+        }
+      }
+
+      @media (max-width: 382px) {
+        body {
+          font-size: 1.35rem;
+        }
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        font-weight: 700;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-word;
+      }
+
+      h1 {
+        font-size: 2.35em;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      h3 {
+        font-size: 1.75em;
+      }
+
+      h4 {
+        font-size: 1.5em;
+      }
+
+      h5 {
+        font-size: 1.25em;
+      }
+
+      h6 {
+        font-size: 1em;
+      }
+
+      p {
+        margin-top: 0px;
+        margin-bottom: 2.5rem;
+      }
+
+      small,
+      sub,
+      sup {
+        font-size: 75%;
+      }
+
+      hr {
+        border-color: #1d7484;
+      }
+
+      a {
+        text-decoration: none;
+        color: #1d7484;
+      }
+      a:hover {
+        color: #982c61;
+        border-bottom: 2px solid #4a4a4a;
+      }
+      a:visited {
+        color: #144f5a;
+      }
+
+      ul {
+        padding-left: 1.4em;
+        margin-top: 0px;
+        margin-bottom: 2.5rem;
+      }
+
+      li {
+        margin-bottom: 0.4em;
+      }
+
+      blockquote {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 1em;
+        padding-top: 0.8em;
+        padding-bottom: 0.8em;
+        padding-right: 0.8em;
+        border-left: 5px solid #1d7484;
+        margin-bottom: 2.5rem;
+        background-color: #f1f1f1;
+      }
+
+      blockquote p {
+        margin-bottom: 0;
+      }
+
+      img,
+      video {
+        height: auto;
+        max-width: 100%;
+        margin-top: 0px;
+        margin-bottom: 2.5rem;
+      }
+
+      /* Pre and Code */
+      pre {
+        background-color: #f1f1f1;
+        display: block;
+        padding: 1em;
+        overflow-x: auto;
+        margin-top: 0px;
+        margin-bottom: 2.5rem;
+      }
+
+      code {
+        font-size: 0.9em;
+        padding: 0 0.5em;
+        background-color: #f1f1f1;
+        white-space: pre-wrap;
+      }
+
+      pre > code {
+        padding: 0;
+        background-color: transparent;
+        white-space: pre;
+      }
+
+      /* Tables */
+      table {
+        text-align: justify;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        padding: 0.5em;
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+      /* Buttons, forms and input */
+      input,
+      textarea {
+        border: 1px solid #4a4a4a;
+      }
+      input:focus,
+      textarea:focus {
+        border: 1px solid #1d7484;
+      }
+
+      textarea {
+        width: 100%;
+      }
+
+      .button,
+      button,
+      input[type="submit"],
+      input[type="reset"],
+      input[type="button"] {
+        display: inline-block;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: #1d7484;
+        color: #f9f9f9;
+        border-radius: 1px;
+        border: 1px solid #1d7484;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+      .button[disabled],
+      button[disabled],
+      input[type="submit"][disabled],
+      input[type="reset"][disabled],
+      input[type="button"][disabled] {
+        cursor: default;
+        opacity: 0.5;
+      }
+      .button:focus:enabled,
+      .button:hover:enabled,
+      button:focus:enabled,
+      button:hover:enabled,
+      input[type="submit"]:focus:enabled,
+      input[type="submit"]:hover:enabled,
+      input[type="reset"]:focus:enabled,
+      input[type="reset"]:hover:enabled,
+      input[type="button"]:focus:enabled,
+      input[type="button"]:hover:enabled {
+        background-color: #982c61;
+        border-color: #982c61;
+        color: #f9f9f9;
+        outline: 0;
+      }
+
+      textarea,
+      select,
+      input {
+        color: #4a4a4a;
+        padding: 6px 10px;
+        /* The 6px vertically centers text on FF, ignored by Webkit */
+        margin-bottom: 10px;
+        background-color: #f1f1f1;
+        border: 1px solid #f1f1f1;
+        border-radius: 4px;
+        box-shadow: none;
+        box-sizing: border-box;
+      }
+      textarea:focus,
+      select:focus,
+      input:focus {
+        border: 1px solid #1d7484;
+        outline: 0;
+      }
+
+      input[type="checkbox"]:focus {
+        outline: 1px dotted #1d7484;
+      }
+
+      label,
+      legend,
+      fieldset {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Advent of code 2021 Solution solver</h1>
+      <p>
+        Welcome to my advent of code 2021 solution solver. There will be
+        sections defined for each day, where you can submit your data and get
+        results for both parts of the day
+      </p>
+      <p>
+        <b>Author</b>: <a href="https://github.com/Tomas-Juri">Tomas-Juri</a>
+        <br />
+        <b>Repository</b>:
+        <a href="https://github.com/Tomas-Juri/AdventOfCode2021">Tomas-Juri</a>
+        <br />
+      </p>
+    </header>
+    <hr />
+    <main>
+      <section>
+        <h2>Day 1: Sonar Sweep</h2>
+
+        <form action="" onsubmit="onSubmitDay1Handler(event)">
+          <label for="day1Input">Your input</label>
+          <input name="day1Input" id="day1Input" type="text" />
+          <button type="submit">Submit</button>
+        </form>
+
+        <p>
+          <b>Part one</b>: <br />
+          <span id="day1Part1Solution"></span>
+        </p>
+        <p>
+          <b>Part two</b>: <br />
+          <span id="day1Part2Solution"></span>
+        </p>
+      </section>
+    </main>
+    <hr />
+    <footer>
+      Made by <a href="https://github.com/Tomas-Juri">Tomáš Juřička</a>
+    </footer>
+  </body>
+
+  <!-- Day1 -->
+  <script>
+    function onSubmitDay1Handler(e) {
+      e.preventDefault();
+      const input = e.target.elements.day1Input.value
+        .split(" ")
+        .map((line) => +line);
+
+      let partOneResult = 0;
+
+      for (let index = 0; index < input.length - 1; index++) {
+        const current = input[index];
+        const next = input[index + 1];
+        partOneResult += current > next ? 0 : 1;
+      }
+
+      document.getElementById("day1Part1Solution").innerText = partOneResult;
+
+      let partTwoResult = 0;
+
+      for (let index = 0; index < input.length - 3; index++) {
+        const currentGroup = input
+          .slice(index, index + 3)
+          .reduce((a, b) => a + b);
+        const nextGroup = input
+          .slice(index + 1, index + 4)
+          .reduce((a, b) => a + b);
+        partTwoResult += currentGroup >= nextGroup ? 0 : 1;
+      }
+
+      document.getElementById("day1Part2Solution").innerText = partTwoResult;
+    }
+  </script>
+</html>
